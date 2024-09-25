@@ -9,11 +9,12 @@
             <div class="line"></div>
           </div>
           <div class="link-list" :class="{ hidden: loading }">
-            <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.2 * i + 's' }" :to="link.link">{{
-              link.name }}</NuxtLink>
+            <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.2 * i + 's' }"
+              :to="link.link">{{
+                link.name }}</NuxtLink>
           </div>
         </div>
-        <div class="welcome">
+        <div class="welcome" v-if="showWelcome">
           <p class="letter">W</p>
           <p class="letter">E</p>
           <p class="letter">L</p>
@@ -37,7 +38,7 @@
         <div class="h-scroll">
           <article class="item" v-for="project in projects">
             <NuxtLink :to="project.link" target="_blank">{{ project.title }}</NuxtLink>
-            <p>{{ project.description }}</p>
+            <p :title="project.description">{{ project.description }}</p>
           </article>
         </div>
       </Section>
@@ -45,7 +46,7 @@
         <div class="h-scroll">
           <article class="item" v-for="product in products">
             <NuxtLink :to="product.link" target="_blank">{{ product.title }}</NuxtLink>
-            <p>{{ product.description }}</p>
+            <p :title="product.description">{{ product.description }}</p>
           </article>
         </div>
       </Section>
@@ -87,6 +88,15 @@
 <script lang="ts" setup>
 const showLinks = ref(false)
 const loading = ref(true)
+const showWelcome = ref(false)
+
+const keyboard = useKeyboard()
+
+keyboard.down("x", (e) => {
+  if (e.ctrlKey) {
+    showWelcome.value = !showWelcome.value
+  }
+})
 
 interface Item {
   title: string
@@ -107,12 +117,12 @@ const projects: Item[] = [
   },
   {
     title: "Vleer",
-    description: "A collection of tutorials or blog posts for things I like or had problems with.",
+    description: "Free and open source music player made by PandaDEV and me.",
     link: "https://vleer.app"
   },
   {
     title: "Epilogue",
-    description: "A collection of tutorials or blog posts for things I like or had problems with.",
+    description: "We are a team of five software developers based in Switzerland.",
     link: "https://epilogue.team"
   },
   {
@@ -122,7 +132,7 @@ const projects: Item[] = [
   },
   {
     title: "Database",
-    description: "A collection of tutorials or blog posts for things I like or had problems with.",
+    description: "Collection of tutorials or blog posts about things I like or had problems with.",
     link: "https://database.waradu.dev"
   },
 ]
@@ -174,9 +184,13 @@ const links: Link[] = [
     link: "https://discord.gg/yG2zF7yDfk"
   },
   {
-    name: "Dribble",
+    name: "Email",
+    link: "mailto:waradu@outlook.com"
+  },
+  {
+    name: "Dribbble",
     link: "https://dribbble.com/Waradu"
-  }
+  },
 ]
 
 onMounted(() => {

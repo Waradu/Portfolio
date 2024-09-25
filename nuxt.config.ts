@@ -20,5 +20,5 @@ export default defineNuxtConfig({
       }
     }
   },
-  modules: ["nuxt-build-cache"],
+  modules: ["nuxt-build-cache", "wrdu-keyboard"],
 });
