@@ -6,6 +6,7 @@
 <script lang="ts" setup>
 onMounted(() => {
   document.documentElement.style.filter = "blur(0px)";
+  console.log("added");
 })
 </script>
 
@@ -40,7 +41,7 @@ body,
 }
 
 html {
-  filter: blur(5px);
+  filter: blur(10px);
   transition: filter .2s ease-in-out;
 }
 

@@ -9,11 +9,9 @@
             <div class="line"></div>
             <div class="line"></div>
           </div>
-          <div class="link-list">
-            <NuxtLink class="link" to="https://youtube.com/@waradu" style="--delay: 0s;">Youtube</NuxtLink>
-            <NuxtLink class="link" to="https://github.com/waradu" style="--delay: 0.2s;">Github</NuxtLink>
-            <NuxtLink class="link" to="https://discord.gg/yG2zF7yDfk" style="--delay: 0.4s;">Discord</NuxtLink>
-            <NuxtLink class="link" to="https://dribbble.com/Waradu" style="--delay: 0.6s;">Dribble</NuxtLink>
+          <div class="link-list" :class="{ hidden: loading }">
+            <NuxtLink v-for="(link, i) in links" class="link" :style="{ '--delay': 0.2 * i + 's' }" :to="link.link">{{
+              link.name }}</NuxtLink>
           </div>
         </div>
         <div class="welcome">
@@ -52,16 +50,53 @@
           </article>
         </div>
       </Section>
+      <Section title="My favorite...">
+        <div class="favorites">
+          <b>...animes</b>
+          <ul>
+            <li>• Attack on Titan</li>
+            <li>• Bocchi the rock</li>
+            <li>• Jujutsu Kaisen</li>
+            <li>• A silent Voice</li>
+            <li>• Steins;Gate</li>
+          </ul>
+          <b>...games</b>
+          <ul>
+            <li>• Minecraft</li>
+            <li>• Celeste</li>
+          </ul>
+          <b>...music</b>
+          <ul>
+            <li>• Fatal - GEMN</li>
+            <li>• SPECIALZ - King Gnu</li>
+            <li>• Wanting, Getting, Wanting - DEMONDICE</li>
+            <li>• MERA MERA - Mori Calliope</li>
+            <li>• Crush - Denonbu</li>
+            <li>• I I I - Houshou Marine & Kobo Kanaeru</li>
+            <li>• Seisyun complex - Kessoku band</li>
+            <li>• Graveyard Shift - Mori Calliope</li>
+            <li>• Idol - YOASOBI</li>
+            <li>• DEAT BEATS - Mori Calliope</li>
+            <li>• Heart 111 - Yuri</li>
+          </ul>
+        </div>
+      </Section>
     </main>
   </div>
 </template>
 
 <script lang="ts" setup>
 const showLinks = ref(false)
+const loading = ref(true)
 
 interface Item {
   title: string
   description: string
+  link: string
+}
+
+interface Link {
+  name: string
   link: string
 }
 
@@ -115,6 +150,29 @@ const products: Item[] = [
     link: "https://discord.com"
   },
 ]
+
+const links: Link[] = [
+  {
+    name: "Youtube",
+    link: "https://youtube.com/@waradu"
+  },
+  {
+    name: "Github",
+    link: "https://github.com/waradu"
+  },
+  {
+    name: "Discord",
+    link: "https://discord.gg/yG2zF7yDfk"
+  },
+  {
+    name: "Dribble",
+    link: "https://dribbble.com/Waradu"
+  }
+]
+
+onMounted(() => {
+  loading.value = false
+})
 </script>
 
 <style lang="scss">
@@ -127,6 +185,7 @@ const products: Item[] = [
   main {
     display: flex;
     width: 100%;
+    height: max-content;
     padding-top: 60px;
     padding-bottom: 60px;
     flex-direction: column;
@@ -174,6 +233,10 @@ const products: Item[] = [
             opacity: 0;
             color: black;
             animation: hide .2s ease-in-out 0s alternate 1 forwards;
+          }
+
+          &.hidden {
+            opacity: 0;
           }
         }
 
@@ -302,6 +365,26 @@ const products: Item[] = [
         max-width: 150px !important;
       }
     }
+
+    .favorites {
+      width: 100%;
+      max-width: 800px;
+      padding-inline: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      b {
+        font-size: 14px;
+      }
+      
+      ul {
+        list-style: none;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+      }
+    }
   }
 }
 
@@ -327,7 +410,7 @@ const products: Item[] = [
   }
 
   to {
-    translate: 0 0px;
+    translate: 0 5px;
     filter: blur(5px);
     opacity: 0;
   }

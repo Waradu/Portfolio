@@ -14,7 +14,10 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
-      title: "WRDU"
+      title: "WRDU",
+      htmlAttrs: {
+        style: "filter: blur(10px);"
+      }
     }
   },
   modules: ["nuxt-build-cache"],
