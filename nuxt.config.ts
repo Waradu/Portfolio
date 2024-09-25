@@ -17,7 +17,38 @@ export default defineNuxtConfig({
       title: "WRDU",
       htmlAttrs: {
         style: "filter: blur(10px);"
-      }
+      },
+      meta: [
+        { charset: "utf-8" },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
+        },
+        { name: "author", content: "Waradu" },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "Waradu's portfolio",
+        },
+        {
+          property: "og:title",
+          content: "Waradu",
+        },
+        {
+          property: "og:description",
+          content:
+            "Waradu's portfolio",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+        {
+          property: "og:url",
+          content: "https://waradu.dev",
+        },
+      ],
     }
   },
   modules: ["nuxt-build-cache", "wrdu-keyboard"],

@@ -31,7 +31,7 @@
             <h2>aka Waradu</h2>
           </div>
           <div class="description info">
-            <h1 class="profession">Designer & Developer from Swiss</h1>
+            <h1 class="profession">Developer & Designer from Switzerland</h1>
             <h2 class="details">I’m {{ calculateAge("2007-07-13") }} years old</h2>
           </div>
         </div>
