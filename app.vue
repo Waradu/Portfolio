@@ -42,7 +42,7 @@ body,
 
 html {
   filter: blur(10px);
-  transition: filter .2s ease-in-out;
+  transition: filter .5s ease-in-out;
 }
 
 ::-webkit-scrollbar {
