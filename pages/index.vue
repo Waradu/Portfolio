@@ -278,7 +278,7 @@ const calculateAge = (birthDate: string): number => {
           position: relative;
 
           .link {
-            translate: 0 -30px;
+            translate: 0 -20px;
             filter: blur(5px);
             opacity: 0;
             color: black;
@@ -444,7 +444,7 @@ const calculateAge = (birthDate: string): number => {
 
 @keyframes from-top {
   from {
-    translate: 0 -30px;
+    translate: 0 -20px;
     filter: blur(5px);
     opacity: 0;
   }
