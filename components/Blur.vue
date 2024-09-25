@@ -60,7 +60,7 @@
 <style lang="scss">
 .top-blur-container {
   flex: 0 0 auto;
-  height: 100px;
+  height: 60px;
   left: 0;
   pointer-events: none;
   position: fixed;
@@ -72,17 +72,11 @@
 .bottom-blur-container {
   bottom: 0px;
   flex: 0 0 auto;
-  height: 100px;
+  height: 60px;
   left: 0;
   pointer-events: none;
   position: fixed;
   width: 100%;
   z-index: 1;
-}
-
-@media (max-width: 800px) {
-  .blur-container {
-    height: 80px;
-  }
 }
 </style>
