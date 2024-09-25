@@ -3,10 +3,12 @@
     <main>
       <header>
         <div class="links" :class="{ shown: showLinks }">
-          <div class="menu" @click="showLinks = !showLinks">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+          <div class="menu">
+            <div class="hamburger" @click="showLinks = !showLinks">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
+            </div>
           </div>
           <div class="link-list" :class="{ hidden: loading }">
             <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.2 * i + 's' }"
@@ -233,20 +235,28 @@ const calculateAge = (birthDate: string): number => {
       flex-direction: column;
       gap: 40px;
       width: 100%;
-      max-width: 800px;
-      padding-inline: 40px;
+      align-items: center;
 
       .links {
         display: flex;
         gap: 10px;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
 
         .menu {
-          display: flex;
-          width: 20px;
-          flex-direction: column;
-          gap: 3px;
-          cursor: pointer;
+          width: 100%;
+          max-width: 800px;
+          padding-inline: 40px;
+
+          .hamburger {
+            display: flex;
+            width: 20px;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+          }
+
 
           .line {
             background-color: #000000aa;
@@ -260,8 +270,12 @@ const calculateAge = (birthDate: string): number => {
           display: flex;
           align-items: center;
           gap: 20px;
-          overflow: visible;
-          transition: .2s ease-in-out;
+          transition: height .2s ease-in-out;
+          overflow: auto;
+          padding-left: calc(-360px + 50vw);
+          padding-right: calc(-360px + 50vw);
+          width: 100%;
+          position: relative;
 
           .link {
             translate: 0 -30px;
@@ -291,6 +305,8 @@ const calculateAge = (birthDate: string): number => {
         display: flex;
         justify-content: space-between;
         width: 100%;
+        max-width: 800px;
+        padding-inline: 40px;
 
         .letter {
           font-size: 36px;
@@ -302,6 +318,8 @@ const calculateAge = (birthDate: string): number => {
         display: flex;
         justify-content: space-between;
         gap: 20px;
+        max-width: 800px;
+        padding-inline: 40px;
 
         .info {
           display: flex;
@@ -476,6 +494,11 @@ const calculateAge = (birthDate: string): number => {
           padding-left: 40px;
           padding-right: 40px;
         }
+      }
+
+      .link-list {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
       }
     }
   }
