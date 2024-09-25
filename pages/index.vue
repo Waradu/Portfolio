@@ -9,7 +9,7 @@
             <div class="line"></div>
           </div>
           <div class="link-list" :class="{ hidden: loading }">
-            <NuxtLink v-for="(link, i) in links" class="link" :style="{ '--delay': 0.2 * i + 's' }" :to="link.link">{{
+            <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.2 * i + 's' }" :to="link.link">{{
               link.name }}</NuxtLink>
           </div>
         </div>
