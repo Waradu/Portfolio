@@ -3,6 +3,12 @@
   <Blur />
 </template>
 
+<script lang="ts" setup>
+onMounted(() => {
+  document.documentElement.style.filter = "blur(0px)";
+})
+</script>
+
 <style lang="scss">
 @import url('~/assets/fonts/inriaserif.scss');
 
@@ -31,6 +37,11 @@ body,
   font-family: 'Inria Serif', sans-serif;
   overflow-x: hidden;
   background: #E8DFD7;
+}
+
+html {
+  filter: blur(5px);
+  transition: filter .2s ease-in-out;
 }
 
 ::-webkit-scrollbar {

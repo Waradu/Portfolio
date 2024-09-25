@@ -3,10 +3,18 @@
     <main>
       <header>
         <b>THIS SITE IS CURRENTLY WORK IN PROGRESS</b>
-        <div class="menu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+        <div class="links" :class="{ shown: showLinks }">
+          <div class="menu" @click="showLinks = !showLinks">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="link-list">
+            <NuxtLink class="link" to="https://youtube.com/@waradu" style="--delay: 0s;">Youtube</NuxtLink>
+            <NuxtLink class="link" to="https://github.com/waradu" style="--delay: 0.2s;">Github</NuxtLink>
+            <NuxtLink class="link" to="https://discord.gg/yG2zF7yDfk" style="--delay: 0.4s;">Discord</NuxtLink>
+            <NuxtLink class="link" to="https://dribbble.com/Waradu" style="--delay: 0.6s;">Dribble</NuxtLink>
+          </div>
         </div>
         <div class="welcome">
           <p class="letter">W</p>
@@ -49,6 +57,8 @@
 </template>
 
 <script lang="ts" setup>
+const showLinks = ref(false)
+
 interface Item {
   title: string
   description: string
@@ -131,17 +141,50 @@ const products: Item[] = [
       max-width: 800px;
       padding-inline: 40px;
 
-      .menu {
+      .links {
         display: flex;
-        width: 20px;
+        gap: 10px;
         flex-direction: column;
-        gap: 3px;
-        cursor: pointer;
 
-        .line {
-          background-color: #000000aa;
-          height: 1.5px;
-          width: 100%;
+        .menu {
+          display: flex;
+          width: 20px;
+          flex-direction: column;
+          gap: 3px;
+          cursor: pointer;
+
+          .line {
+            background-color: #000000aa;
+            height: 1.5px;
+            width: 100%;
+          }
+        }
+
+        .link-list {
+          height: 0px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          overflow: visible;
+          transition: .2s ease-in-out;
+
+          .link {
+            translate: 0 -30px;
+            filter: blur(5px);
+            opacity: 0;
+            color: black;
+            animation: hide .2s ease-in-out 0s alternate 1 forwards;
+          }
+        }
+
+        &.shown {
+          .link-list {
+            height: 30px;
+
+            .link {
+              animation: from-top .2s ease-in-out var(--delay, 0s) alternate 1 forwards;
+            }
+          }
         }
       }
 
@@ -259,6 +302,34 @@ const products: Item[] = [
         max-width: 150px !important;
       }
     }
+  }
+}
+
+@keyframes from-top {
+  from {
+    translate: 0 -30px;
+    filter: blur(5px);
+    opacity: 0;
+  }
+
+  to {
+    translate: 0 0px;
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    translate: 0 0px;
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  to {
+    translate: 0 0px;
+    filter: blur(5px);
+    opacity: 0;
   }
 }
 </style>
