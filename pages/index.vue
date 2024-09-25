@@ -2,7 +2,6 @@
   <div class="page">
     <main>
       <header>
-        <b>THIS SITE IS CURRENTLY WORK IN PROGRESS</b>
         <div class="links" :class="{ shown: showLinks }">
           <div class="menu" @click="showLinks = !showLinks">
             <div class="line"></div>
@@ -30,7 +29,7 @@
           </div>
           <div class="description info">
             <h1 class="profession">Designer & Developer from Swiss</h1>
-            <h2 class="details">I’m 17 years old and working @ EpilogueTeam</h2>
+            <h2 class="details">I’m {{ calculateAge("2007-07-13") }} years old</h2>
           </div>
         </div>
       </header>
@@ -107,6 +106,16 @@ const projects: Item[] = [
     link: "https://a.ni.me.waradu.dev"
   },
   {
+    title: "Vleer",
+    description: "A collection of tutorials or blog posts for things I like or had problems with.",
+    link: "https://vleer.app"
+  },
+  {
+    title: "Epilogue",
+    description: "A collection of tutorials or blog posts for things I like or had problems with.",
+    link: "https://epilogue.team"
+  },
+  {
     title: "Eggcellent",
     description: "Lets you search, controll and manage your bookmarks, history, extensions, and tabs.",
     link: "https://egg.waradu.dev"
@@ -173,6 +182,19 @@ const links: Link[] = [
 onMounted(() => {
   loading.value = false
 })
+
+const calculateAge = (birthDate: string): number => {
+  const birth = new Date(birthDate);
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+
+  return age;
+};
 </script>
 
 <style lang="scss">
@@ -377,7 +399,7 @@ onMounted(() => {
       b {
         font-size: 14px;
       }
-      
+
       ul {
         list-style: none;
         font-size: 16px;
@@ -413,6 +435,35 @@ onMounted(() => {
     translate: 0 5px;
     filter: blur(5px);
     opacity: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .page {
+    main {
+      padding-top: 40px;
+      padding-bottom: 40px;
+
+      header {
+        .about-me {
+          flex-direction: column;
+
+          .info {
+            &.description {
+              text-align: start;
+            }
+          }
+        }
+      }
+
+      #made-by-me,
+      #what-i-use {
+        .h-scroll {
+          padding-left: 40px;
+          padding-right: 40px;
+        }
+      }
+    }
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bottom-blur-container">
+  <div class="bottom-blur-container blur-container">
     <div style="position: relative; width: 100%; height: 100%; border-radius: 0px;">
       <div
         style="position: absolute; inset: 0px; z-index: 1; backdrop-filter: blur(0.0625px); mask-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 25%, rgba(0, 0, 0, 0) 37.5%); border-radius: 0px; pointer-events: none;">
@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  <div class="top-blur-container">
+  <div class="top-blur-container blur-container">
     <div style="position: relative; width: 100%; height: 100%; border-radius: 0px;">
       <div
         style="position: absolute; inset: 0px; z-index: 1; backdrop-filter: blur(0.0625px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 25%, rgba(0, 0, 0, 0) 37.5%); border-radius: 0px; pointer-events: none;">
@@ -78,5 +78,11 @@
   position: fixed;
   width: 100%;
   z-index: 1;
+}
+
+@media (max-width: 800px) {
+  .blur-container {
+    height: 80px;
+  }
 }
 </style>
