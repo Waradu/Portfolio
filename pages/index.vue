@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="link-list" :class="{ hidden: loading }">
-            <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.2 * i + 's' }"
+            <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.08 * i + 's' }"
               :to="link.link">{{
                 link.name }}</NuxtLink>
           </div>
