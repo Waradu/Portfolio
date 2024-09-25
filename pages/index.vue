@@ -2,7 +2,12 @@
   <div class="page">
     <main>
       <header>
-        THIS SITE IS CURRENTLY WORK IN PROGRESS
+        <b>THIS SITE IS CURRENTLY WORK IN PROGRESS</b>
+        <div class="menu">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
         <div class="welcome">
           <p class="letter">W</p>
           <p class="letter">E</p>
@@ -25,22 +30,18 @@
       </header>
       <Section title="Made by me">
         <div class="h-scroll">
-          <div class="items">
-            <article class="item" v-for="project in projects">
-              <NuxtLink :to="project.link" target="_blank">{{ project.title }}</NuxtLink>
-              <p>{{ project.description }}</p>
-            </article>
-          </div>
+          <article class="item" v-for="project in projects">
+            <NuxtLink :to="project.link" target="_blank">{{ project.title }}</NuxtLink>
+            <p>{{ project.description }}</p>
+          </article>
         </div>
       </Section>
       <Section title="What I use">
         <div class="h-scroll">
-          <div class="items">
-            <article class="item" v-for="product in products">
-              <NuxtLink :to="product.link" target="_blank">{{ product.title }}</NuxtLink>
-              <p>{{ product.description }}</p>
-            </article>
-          </div>
+          <article class="item" v-for="product in products">
+            <NuxtLink :to="product.link" target="_blank">{{ product.title }}</NuxtLink>
+            <p>{{ product.description }}</p>
+          </article>
         </div>
       </Section>
     </main>
@@ -116,8 +117,8 @@ const products: Item[] = [
   main {
     display: flex;
     width: 100%;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     flex-direction: column;
     align-items: center;
     gap: 80px;
@@ -129,6 +130,20 @@ const products: Item[] = [
       width: 100%;
       max-width: 800px;
       padding-inline: 40px;
+
+      .menu {
+        display: flex;
+        width: 20px;
+        flex-direction: column;
+        gap: 3px;
+        cursor: pointer;
+
+        .line {
+          background-color: #000000aa;
+          height: 1.5px;
+          width: 100%;
+        }
+      }
 
       .welcome {
         display: flex;
@@ -166,13 +181,16 @@ const products: Item[] = [
       }
     }
 
-    #made-by-me, #what-i-use {
+    #made-by-me,
+    #what-i-use {
       .h-scroll {
         overflow: auto;
         padding-left: calc(-360px + 50vw);
         padding-right: calc(-360px + 50vw);
         width: 100%;
         position: relative;
+        display: flex;
+        gap: 40px;
 
         &::after {
           content: "";
@@ -186,42 +204,50 @@ const products: Item[] = [
           pointer-events: none;
         }
 
-        .items {
+        &::before {
+          content: "";
+          display: block;
+          position: fixed;
+          height: 100%;
+          width: 40px;
+          left: 0;
+          top: 0;
+          background-image: linear-gradient(to left, transparent, #e8dfd7 80%);
+          pointer-events: none;
+        }
+
+        .item {
           display: flex;
-          gap: 40px;
-          min-width: max-content;
+          width: 100%;
+          max-width: 250px;
+          min-width: 250px;
+          flex-direction: column;
+          gap: 5px;
 
-          .item {
-            display: flex;
+          a {
+            color: #000;
+            text-overflow: ellipsis;
             width: 100%;
-            max-width: 250px;
-            flex-direction: column;
-            gap: 5px;
+            max-width: max-content;
+            overflow: hidden;
+            font-size: 16px;
+            text-decoration-color: transparent;
+            transition: .2s ease-in-out;
+            white-space: nowrap;
+            font-weight: 700;
 
-            a {
-              color: #000;
-              text-overflow: ellipsis;
-              width: 100%;
-              max-width: max-content;
-              overflow: hidden;
-              font-size: 16px;
-              text-decoration-color: transparent;
-              transition: .2s ease-in-out;
-              white-space: nowrap;
-
-              &:hover {
-                text-decoration-color: #00000040 !important;
-              }
+            &:hover {
+              text-decoration-color: #00000080 !important;
             }
+          }
 
-            p {
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 3;
-              align-self: stretch;
-              text-overflow: ellipsis;
-              font-size: 14px;
-            }
+          p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            align-self: stretch;
+            text-overflow: ellipsis;
+            font-size: 14px;
           }
         }
       }
@@ -229,6 +255,7 @@ const products: Item[] = [
 
     #what-i-use {
       .item {
+        min-width: 150px !important;
         max-width: 150px !important;
       }
     }

@@ -1,5 +1,6 @@
 <template>
   <NuxtPage />
+  <Blur />
 </template>
 
 <style lang="scss">
@@ -12,6 +13,14 @@
   font-weight: 300;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+b {
+  font-weight: 700;
+}
+
+i {
+  font-style: italic;
 }
 
 html,
