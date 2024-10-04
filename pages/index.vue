@@ -27,8 +27,11 @@
         </div>
         <div class="about-me">
           <div class="name info">
-            <h1>Name’s Noan</h1>
-            <h2>aka Waradu</h2>
+            <img src="~/assets/me.svg" alt="noan" class="me" v-if="showImage">
+            <div class="text">
+              <h1>Name’s Noan</h1>
+              <h2>aka Waradu</h2>
+            </div>
           </div>
           <div class="description info">
             <h1 class="profession">Developer & Designer from Switzerland</h1>
@@ -91,12 +94,19 @@
 const showLinks = ref(false)
 const loading = ref(true)
 const showWelcome = ref(false)
+const showImage = ref(false)
 
 const keyboard = useKeyboard()
 
 keyboard.down("x", (e) => {
   if (e.ctrlKey) {
     showWelcome.value = !showWelcome.value
+  }
+})
+
+keyboard.down("y", (e) => {
+  if (e.ctrlKey) {
+    showImage.value = !showImage.value
   }
 })
 
@@ -321,7 +331,7 @@ const calculateAge = (birthDate: string): number => {
         max-width: 800px;
         padding-inline: 40px;
 
-        .info {
+        .description {
           display: flex;
           flex-direction: column;
 
@@ -332,6 +342,37 @@ const calculateAge = (birthDate: string): number => {
           h2 {
             color: rgba(0, 0, 0, 0.8);
             font-size: 12px;
+          }
+
+          &.description {
+            text-align: end
+          }
+        }
+
+        .name {
+          display: flex;
+          gap: 10px;
+          position: relative;
+
+          h1 {
+            font-size: 24px;
+          }
+
+          h2 {
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 12px;
+          }
+
+          .me {
+            position: absolute;
+            top: 50%;
+            height: 70px;
+            translate: -90px -50%;
+          }
+
+          .text {
+            display: flex;
+            flex-direction: column;
           }
 
           &.description {
@@ -483,6 +524,17 @@ const calculateAge = (birthDate: string): number => {
           .info {
             &.description {
               text-align: start;
+            }
+
+            &.name {
+              flex-direction: column;
+              align-items: start;
+              
+              .me {
+                position: relative;
+                top: unset;
+                translate: 0 0;
+              }
             }
           }
         }
