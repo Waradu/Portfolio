@@ -60,10 +60,12 @@
           <b>...animes</b>
           <ul>
             <li>• Attack on Titan</li>
+            <li>• Oshi no ko</li>
             <li>• Bocchi the rock</li>
             <li>• Jujutsu Kaisen</li>
             <li>• A silent Voice</li>
             <li>• Steins;Gate</li>
+            <li>• My Deer Friend Nokotan</li>
           </ul>
           <b>...games</b>
           <ul>
@@ -446,6 +448,7 @@ const calculateAge = (birthDate: string): number => {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             align-self: stretch;
             text-overflow: ellipsis;
             font-size: 14px;
