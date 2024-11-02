@@ -65,12 +65,13 @@
             <li>• Jujutsu Kaisen</li>
             <li>• A silent Voice</li>
             <li>• Steins;Gate</li>
-            <li>• My Deer Friend Nokotan</li>
+            <li>• Horimiya</li>
           </ul>
           <b>...games</b>
           <ul>
             <li>• Minecraft</li>
             <li>• Celeste</li>
+            <li>• Zenless Zone Zero</li>
           </ul>
           <b>...music</b>
           <ul>
@@ -78,12 +79,17 @@
             <li>• SPECIALZ - King Gnu</li>
             <li>• Wanting, Getting, Wanting - DEMONDICE</li>
             <li>• MERA MERA - Mori Calliope</li>
+            <li>• Show - Ado</li>
+            <li>• King - KETACHIGAI</li>
+            <li>• Odo - Ado</li>
             <li>• Crush - Denonbu</li>
             <li>• I I I - Houshou Marine & Kobo Kanaeru</li>
             <li>• Seisyun complex - Kessoku band</li>
             <li>• Graveyard Shift - Mori Calliope</li>
             <li>• Idol - YOASOBI</li>
+            <li>• Alkatraz - DEMONDICE</li>
             <li>• DEAT BEATS - Mori Calliope</li>
+            <li>• BANG!! - EGOIST</li>
             <li>• Heart 111 - Yuri</li>
           </ul>
         </div>
@@ -96,7 +102,7 @@
 const showLinks = ref(false)
 const loading = ref(true)
 const showWelcome = ref(false)
-const showImage = ref(false)
+const showImage = ref(true)
 
 const keyboard = useKeyboard()
 
@@ -532,7 +538,7 @@ const calculateAge = (birthDate: string): number => {
             &.name {
               flex-direction: column;
               align-items: start;
-              
+
               .me {
                 position: relative;
                 top: unset;
