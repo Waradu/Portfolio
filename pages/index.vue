@@ -206,7 +206,7 @@ const links: Link[] = [
   },
   {
     name: "Email",
-    link: "mailto:waradu@outlook.com"
+    link: "mailto:me@waradu.dev"
   },
   {
     name: "Dribbble",
