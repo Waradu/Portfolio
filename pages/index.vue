@@ -78,19 +78,20 @@
             <li>• Fatal - GEMN</li>
             <li>• SPECIALZ - King Gnu</li>
             <li>• Wanting, Getting, Wanting - DEMONDICE</li>
-            <li>• MERA MERA - Mori Calliope</li>
             <li>• Show - Ado</li>
-            <li>• King - KETACHIGAI</li>
             <li>• Odo - Ado</li>
-            <li>• Crush - Denonbu</li>
+            <li>• Excuse My Rudeness, But Could You Please RIP? - Mori Calliope</li>
+            <li>• DEAT BEATS - Mori Calliope</li>
+            <li>• King - KETACHIGAI</li>
             <li>• I I I - Houshou Marine & Kobo Kanaeru</li>
-            <li>• Seisyun complex - Kessoku band</li>
+            <li>• MERA MERA - Mori Calliope</li>
             <li>• Graveyard Shift - Mori Calliope</li>
             <li>• Idol - YOASOBI</li>
             <li>• Alkatraz - DEMONDICE</li>
-            <li>• DEAT BEATS - Mori Calliope</li>
             <li>• BANG!! - EGOIST</li>
             <li>• Heart 111 - Yuri</li>
+            <li>• Crush - Denonbu</li>
+            <li>• Seisyun complex - Kessoku band</li>
           </ul>
         </div>
       </Section>
