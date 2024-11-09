@@ -38,6 +38,11 @@ body,
   font-family: 'Inria Serif', sans-serif;
   overflow-x: hidden;
   background: #E8DFD7;
+  cursor: url('~/assets/cursor.png'), auto;
+}
+
+a {
+  cursor: url('~/assets/cursor_pointer.png'), auto;
 }
 
 html {

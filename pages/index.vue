@@ -273,7 +273,7 @@ const calculateAge = (birthDate: string): number => {
             width: 20px;
             flex-direction: column;
             gap: 3px;
-            cursor: pointer;
+            cursor: url('~/assets/cursor_pointer.png'), auto;
           }
 
 
@@ -301,7 +301,14 @@ const calculateAge = (birthDate: string): number => {
             filter: blur(5px);
             opacity: 0;
             color: black;
+            text-decoration-color: transparent;
             animation: hide .2s ease-in-out 0s alternate 1 forwards;
+            transition: .2s ease-in-out;
+
+            &:hover {
+              color: black;
+              text-decoration-color: black;
+            }
           }
 
           &.hidden {
