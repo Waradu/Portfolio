@@ -1,17 +1,24 @@
 <template>
   <NuxtPage />
   <Blur />
+  <NuxtParticles
+    id="tsparticles"
+    url="/particles.json"
+    v-if="SNOW"
+  ></NuxtParticles>
 </template>
 
 <script lang="ts" setup>
+const SNOW = new Date().getMonth() === 11;
+
 onMounted(() => {
   document.documentElement.style.filter = "blur(0px)";
   console.log("added");
-})
+});
 </script>
 
 <style lang="scss">
-@import url('~/assets/fonts/inriaserif.scss');
+@import url("~/assets/fonts/inriaserif.scss");
 
 * {
   margin: 0;
@@ -35,19 +42,19 @@ body,
 #__nuxt {
   width: 100%;
   height: 100%;
-  font-family: 'Inria Serif', sans-serif;
+  font-family: "Inria Serif", sans-serif;
   overflow-x: hidden;
-  background: #E8DFD7;
-  cursor: url('~/assets/cursor.png'), auto;
+  background: #e8dfd7;
+  cursor: url("~/assets/cursor.png"), auto;
 }
 
 a {
-  cursor: url('~/assets/cursor_pointer.png'), auto;
+  cursor: url("~/assets/cursor_pointer.png"), auto;
 }
 
 html {
   filter: blur(10px);
-  transition: filter .5s ease-in-out;
+  transition: filter 0.5s ease-in-out;
 }
 
 ::-webkit-scrollbar {

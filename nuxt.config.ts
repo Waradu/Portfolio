@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     head: {
       title: "WRDU",
       htmlAttrs: {
-        style: "filter: blur(10px);"
+        style: "filter: blur(10px);",
       },
       meta: [
         { charset: "utf-8" },
@@ -28,8 +28,7 @@ export default defineNuxtConfig({
         {
           hid: "description",
           name: "description",
-          content:
-            "Waradu's portfolio",
+          content: "Waradu's portfolio",
         },
         {
           property: "og:title",
@@ -37,8 +36,7 @@ export default defineNuxtConfig({
         },
         {
           property: "og:description",
-          content:
-            "Waradu's portfolio",
+          content: "Waradu's portfolio",
         },
         {
           property: "og:type",
@@ -49,7 +47,7 @@ export default defineNuxtConfig({
           content: "https://waradu.dev",
         },
       ],
-    }
+    },
   },
-  modules: ["nuxt-build-cache", "wrdu-keyboard"],
+  modules: ["nuxt-particles", "nuxt-build-cache", "wrdu-keyboard"],
 });
