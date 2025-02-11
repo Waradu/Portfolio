@@ -6,14 +6,24 @@
     url="/particles.json"
     v-if="SNOW"
   ></NuxtParticles>
+  <Shader v-if="shader" />
 </template>
 
 <script lang="ts" setup>
 const SNOW = new Date().getMonth() === 11;
 
+const shader = ref(false);
+
+const keyboard = useKeyboard();
+
+keyboard.down("s", (e) => {
+  if (e.ctrlKey && e.altKey) {
+    shader.value = !shader.value;
+  }
+});
+
 onMounted(() => {
   document.documentElement.style.filter = "blur(0px)";
-  console.log("added");
 });
 </script>
 
@@ -50,6 +60,23 @@ body,
 
 a {
   cursor: url("~/assets/cursor_pointer.png"), auto;
+}
+
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+input,
+textarea,
+select,
+button,
+li {
+  cursor: url("~/assets/cursor_text.png"), auto;
 }
 
 html {
