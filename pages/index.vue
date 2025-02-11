@@ -11,9 +11,14 @@
             </div>
           </div>
           <div class="link-list" :class="{ hidden: loading }">
-            <NuxtLink v-for="(link, i) in links" class="link" target="_blank" :style="{ '--delay': 0.08 * i + 's' }"
-              :to="link.link">{{
-                link.name }}</NuxtLink>
+            <NuxtLink
+              v-for="(link, i) in links"
+              class="link"
+              target="_blank"
+              :style="{ '--delay': 0.08 * i + 's' }"
+              :to="link.link"
+              >{{ link.name }}</NuxtLink
+            >
           </div>
         </div>
         <div class="welcome" v-if="showWelcome">
@@ -27,7 +32,7 @@
         </div>
         <div class="about-me">
           <div class="name info">
-            <img src="~/assets/me.svg" alt="noan" class="me" v-if="showImage">
+            <img src="~/assets/me.svg" alt="noan" class="me" v-if="showImage" />
             <div class="text">
               <h1>Name’s Noan</h1>
               <h2>aka Waradu</h2>
@@ -35,14 +40,18 @@
           </div>
           <div class="description info">
             <h1 class="profession">Developer & Designer from Switzerland</h1>
-            <h2 class="details">I’m {{ calculateAge("2007-07-13") }} years old</h2>
+            <h2 class="details">
+              I’m {{ calculateAge("2007-07-13") }} years old
+            </h2>
           </div>
         </div>
       </header>
       <Section title="Made by me">
         <div class="h-scroll">
           <article class="item" v-for="project in projects">
-            <NuxtLink :to="project.link" target="_blank">{{ project.title }}</NuxtLink>
+            <NuxtLink :to="project.link" target="_blank">{{
+              project.title
+            }}</NuxtLink>
             <p :title="project.description">{{ project.description }}</p>
           </article>
         </div>
@@ -50,7 +59,9 @@
       <Section title="What I use">
         <div class="h-scroll">
           <article class="item" v-for="product in products">
-            <NuxtLink :to="product.link" target="_blank">{{ product.title }}</NuxtLink>
+            <NuxtLink :to="product.link" target="_blank">{{
+              product.title
+            }}</NuxtLink>
             <p :title="product.description">{{ product.description }}</p>
           </article>
         </div>
@@ -69,154 +80,180 @@
           </ul>
           <b>...games</b>
           <ul>
+            <li>• Strinova</li>
             <li>• Minecraft</li>
             <li>• Celeste</li>
-            <li>• Zenless Zone Zero</li>
           </ul>
           <b>...music</b>
           <ul>
-            <li>• Fatal - GEMN</li>
-            <li>• SPECIALZ - King Gnu</li>
             <li>• Wanting, Getting, Wanting - DEMONDICE</li>
+            <li>• Fatal - GEMN</li>
             <li>• Show - Ado</li>
+            <li>• CH4NGE - Giga</li>
+            <li>• Nightmare - Derivakat</li>
+            <li>
+              • Excuse My Rudeness, But Could You Please RIP? - Mori Calliope
+            </li>
             <li>• Odo - Ado</li>
-            <li>• Excuse My Rudeness, But Could You Please RIP? - Mori Calliope</li>
             <li>• DEAT BEATS - Mori Calliope</li>
             <li>• King - KETACHIGAI</li>
             <li>• I I I - Houshou Marine & Kobo Kanaeru</li>
             <li>• MERA MERA - Mori Calliope</li>
             <li>• Graveyard Shift - Mori Calliope</li>
             <li>• Idol - YOASOBI</li>
+            <li>• MORE - K/DA</li>
             <li>• Alkatraz - DEMONDICE</li>
             <li>• BANG!! - EGOIST</li>
             <li>• Heart 111 - Yuri</li>
             <li>• Crush - Denonbu</li>
+            <li>• SPECIALZ - King Gnu</li>
             <li>• Seisyun complex - Kessoku band</li>
           </ul>
         </div>
       </Section>
+      <div class="tip">
+        <span>Press</span>
+        <span class="keys" @click="shader = !shader">
+          <kbd>CTRL</kbd>
+          <kbd>ALT</kbd>
+          <kbd>S</kbd>
+        </span>
+        <span>for a surprise</span>
+      </div>
     </main>
+    <Shader v-if="shader" />
   </div>
 </template>
 
 <script lang="ts" setup>
-const showLinks = ref(false)
-const loading = ref(true)
-const showWelcome = ref(false)
-const showImage = ref(true)
+const showLinks = ref(false);
+const loading = ref(true);
+const showWelcome = ref(false);
+const showImage = ref(true);
+const shader = ref(false);
 
-const keyboard = useKeyboard()
+const keyboard = useKeyboard();
 
 keyboard.down("x", (e) => {
   if (e.ctrlKey) {
-    showWelcome.value = !showWelcome.value
+    showWelcome.value = !showWelcome.value;
   }
-})
+});
 
 keyboard.down("y", (e) => {
   if (e.ctrlKey) {
-    showImage.value = !showImage.value
+    showImage.value = !showImage.value;
   }
-})
+});
+
+keyboard.down("s", (e) => {
+  if (e.ctrlKey && e.altKey) {
+    shader.value = !shader.value;
+  }
+});
 
 interface Item {
-  title: string
-  description: string
-  link: string
+  title: string;
+  description: string;
+  link: string;
 }
 
 interface Link {
-  name: string
-  link: string
+  name: string;
+  link: string;
 }
 
 const projects: Item[] = [
   {
     title: "A • NI • ME",
-    description: "Helps you keep track of all the anime you’ve watched. It’s simple, fast, and easy to use.",
-    link: "https://a.ni.me.waradu.dev"
+    description:
+      "Helps you keep track of all the anime you’ve watched. It’s simple, fast, and easy to use.",
+    link: "https://a.ni.me.waradu.dev",
   },
   {
     title: "Vleer",
     description: "Free and open source music player made by PandaDEV and me.",
-    link: "https://vleer.app"
+    link: "https://vleer.app",
   },
   {
     title: "Epilogue",
-    description: "We are a team of five software developers based in Switzerland.",
-    link: "https://epilogue.team"
+    description:
+      "We are a team of five software developers based in Switzerland.",
+    link: "https://epilogue.team",
   },
   {
     title: "Eggcellent",
-    description: "Lets you search, controll and manage your bookmarks, history, extensions, and tabs.",
-    link: "https://egg.waradu.dev"
+    description:
+      "Lets you search, controll and manage your bookmarks, history, extensions, and tabs.",
+    link: "https://egg.waradu.dev",
   },
   {
     title: "Database",
-    description: "Collection of tutorials or blog posts about things I like or had problems with.",
-    link: "https://database.waradu.dev"
+    description:
+      "Collection of tutorials or blog posts about things I like or had problems with.",
+    link: "https://database.waradu.dev",
   },
-]
+];
 
 const products: Item[] = [
   {
     title: "Figma",
     description: "I love designing and figma makes this easy for me.",
-    link: "https://figma.com"
+    link: "https://figma.com",
   },
   {
     title: "Arc / Zen",
     description: "A gorgeous and good browser’s all I need.",
-    link: "https://arc.net"
+    link: "https://arc.net",
   },
   {
     title: "Apple Products",
     description: "Yes I love Apple and you ain’t changing my mind.",
-    link: "https://apple.com"
+    link: "https://apple.com",
   },
   {
     title: "VScode / Jetbrain",
     description: "I would not be the person I am today without these",
-    link: "https://code.visualstudio.com/"
+    link: "https://code.visualstudio.com/",
   },
   {
     title: "Bitwarden",
     description: "Not much to say, it’s just great",
-    link: "https://bitwarden.com"
+    link: "https://bitwarden.com",
   },
   {
     title: "Discord",
     description: "Hit me up if you want @waradu",
-    link: "https://discord.com"
+    link: "https://discord.com",
   },
-]
+];
 
 const links: Link[] = [
   {
     name: "Youtube",
-    link: "https://youtube.com/@waradu"
+    link: "https://youtube.com/@waradu",
   },
   {
     name: "Github",
-    link: "https://github.com/waradu"
+    link: "https://github.com/waradu",
   },
   {
     name: "Discord",
-    link: "https://discord.gg/yG2zF7yDfk"
+    link: "https://discord.gg/yG2zF7yDfk",
   },
   {
     name: "Email",
-    link: "mailto:me@waradu.dev"
+    link: "mailto:me@waradu.dev",
   },
   {
     name: "Dribbble",
-    link: "https://dribbble.com/Waradu"
+    link: "https://dribbble.com/Waradu",
   },
-]
+];
 
 onMounted(() => {
-  loading.value = false
-})
+  loading.value = false;
+});
 
 const calculateAge = (birthDate: string): number => {
   const birth = new Date(birthDate);
@@ -273,9 +310,8 @@ const calculateAge = (birthDate: string): number => {
             width: 20px;
             flex-direction: column;
             gap: 3px;
-            cursor: url('~/assets/cursor_pointer.png'), auto;
+            cursor: url("~/assets/cursor_pointer.png"), auto;
           }
-
 
           .line {
             background-color: #000000aa;
@@ -289,7 +325,7 @@ const calculateAge = (birthDate: string): number => {
           display: flex;
           align-items: center;
           gap: 20px;
-          transition: height .2s ease-in-out;
+          transition: height 0.2s ease-in-out;
           overflow: auto;
           padding-left: calc(-360px + 50vw);
           padding-right: calc(-360px + 50vw);
@@ -302,8 +338,8 @@ const calculateAge = (birthDate: string): number => {
             opacity: 0;
             color: black;
             text-decoration-color: transparent;
-            animation: hide .2s ease-in-out 0s alternate 1 forwards;
-            transition: .2s ease-in-out;
+            animation: hide 0.2s ease-in-out 0s alternate 1 forwards;
+            transition: 0.2s ease-in-out;
 
             &:hover {
               color: black;
@@ -321,7 +357,8 @@ const calculateAge = (birthDate: string): number => {
             height: 30px;
 
             .link {
-              animation: from-top .2s ease-in-out var(--delay, 0s) alternate 1 forwards;
+              animation: from-top 0.2s ease-in-out var(--delay, 0s) alternate 1
+                forwards;
             }
           }
         }
@@ -361,7 +398,7 @@ const calculateAge = (birthDate: string): number => {
           }
 
           &.description {
-            text-align: end
+            text-align: end;
           }
         }
 
@@ -392,7 +429,7 @@ const calculateAge = (birthDate: string): number => {
           }
 
           &.description {
-            text-align: end
+            text-align: end;
           }
         }
       }
@@ -449,7 +486,7 @@ const calculateAge = (birthDate: string): number => {
             overflow: hidden;
             font-size: 16px;
             text-decoration-color: transparent;
-            transition: .2s ease-in-out;
+            transition: 0.2s ease-in-out;
             white-space: nowrap;
             font-weight: 700;
 
@@ -495,6 +532,27 @@ const calculateAge = (birthDate: string): number => {
         font-size: 16px;
         margin-bottom: 20px;
         margin-left: 10px;
+      }
+    }
+
+    .tip {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #000000aa;
+
+      .keys {
+        user-select: none;
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+      }
+
+      kbd {
+        padding: 6px;
+        padding-inline: 12px;
+        background-color: #ffffff80;
+        border-radius: 12px;
       }
     }
   }

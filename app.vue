@@ -6,21 +6,10 @@
     url="/particles.json"
     v-if="SNOW"
   ></NuxtParticles>
-  <Shader v-if="shader" />
 </template>
 
 <script lang="ts" setup>
 const SNOW = new Date().getMonth() === 11;
-
-const shader = ref(false);
-
-const keyboard = useKeyboard();
-
-keyboard.down("s", (e) => {
-  if (e.ctrlKey && e.altKey) {
-    shader.value = !shader.value;
-  }
-});
 
 onMounted(() => {
   document.documentElement.style.filter = "blur(0px)";
