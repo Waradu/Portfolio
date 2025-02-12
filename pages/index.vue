@@ -113,7 +113,7 @@
       </Section>
       <div class="tip">
         <span>Press</span>
-        <span class="keys" @click="shader = !shader">
+        <span class="keys pointer" @click="shader = !shader">
           <kbd>CTRL</kbd>
           <kbd>ALT</kbd>
           <kbd>S</kbd>
@@ -545,7 +545,6 @@ const calculateAge = (birthDate: string): number => {
         user-select: none;
         display: flex;
         gap: 10px;
-        cursor: pointer;
       }
 
       kbd {

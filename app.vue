@@ -47,7 +47,7 @@ body,
   cursor: url("~/assets/cursor.png"), auto;
 }
 
-a {
+a, .pointer {
   cursor: url("~/assets/cursor_pointer.png"), auto;
 }
 
