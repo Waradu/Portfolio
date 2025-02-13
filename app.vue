@@ -52,6 +52,7 @@ a, .pointer {
 }
 
 p,
+b,
 span,
 h1,
 h2,
