@@ -387,14 +387,19 @@ const calculateAge = (birthDate: string): number => {
         .description {
           display: flex;
           flex-direction: column;
+          align-items: end;
 
           h1 {
             font-size: 24px;
+            width: max-content;
+            text-align: end;
           }
 
           h2 {
             color: rgba(0, 0, 0, 0.8);
             font-size: 12px;
+            width: max-content;
+            text-align: end;
           }
 
           &.description {
@@ -409,11 +414,13 @@ const calculateAge = (birthDate: string): number => {
 
           h1 {
             font-size: 24px;
+            width: max-content;
           }
 
           h2 {
             color: rgba(0, 0, 0, 0.8);
             font-size: 12px;
+            width: max-content;
           }
 
           .me {
@@ -532,6 +539,11 @@ const calculateAge = (birthDate: string): number => {
         font-size: 16px;
         margin-bottom: 20px;
         margin-left: 10px;
+        width: max-content;
+
+        li {
+          width: max-content;
+        }
       }
     }
 
