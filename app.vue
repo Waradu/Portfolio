@@ -65,7 +65,7 @@ textarea,
 select,
 button,
 li {
-  cursor: url("~/assets/cursor_text.png"), auto;
+  cursor: url("~/assets/cursor_text.png") 0 15, auto;
 }
 
 html {
