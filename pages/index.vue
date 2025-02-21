@@ -610,6 +610,7 @@ const calculateAge = (birthDate: string): number => {
           .info {
             &.description {
               text-align: start;
+              align-items: start;
             }
 
             &.name {
